@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flavor Fusion Rush – Privacy Policy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --flame-orange: #FF6B35;
+            --sizzle-red: #E8333A;
+            --gold-coin: #FFB800;
+            --herb-green: #4CAF50;
+            --deep-brown: #2C1810;
+            --charcoal: #1A1A2E;
+            --soft-white: #FEFCFA;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--charcoal);
+            color: #fff;
+            -webkit-font-smoothing: antialiased;
+            line-height: 1.8;
+        }
+
+        /* ── Top bar ── */
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 16px 28px;
+            background: rgba(26, 26, 46, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 107, 53, 0.15);
+        }
+
+        .top-bar-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.55);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: var(--flame-orange);
+        }
+
+        .back-link svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .top-brand {
+            font-family: "Lilita One", cursive;
+            font-size: 15px;
+            background: linear-gradient(135deg, var(--flame-orange), var(--gold-coin));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* ── Hero banner ── */
+        .policy-hero {
+            padding: 120px 28px 60px;
+            text-align: center;
+            position: relative;
+            background:
+                radial-gradient(ellipse 80% 50% at 50% 30%, rgba(255, 107, 53, 0.1) 0%, transparent 70%),
+                var(--charcoal);
+        }
+
+        .policy-hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, rgba(255, 107, 53, 0.3) 50%, transparent 100%);
+        }
+
+        .shield-icon {
+            width: 72px;
+            height: 72px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--flame-orange), var(--sizzle-red));
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 34px;
+            margin-bottom: 24px;
+            box-shadow: 0 8px 32px rgba(255, 107, 53, 0.35);
+        }
+
+        .policy-hero h1 {
+            font-family: "Lilita One", cursive;
+            font-size: 42px;
+            letter-spacing: 0.01em;
+            margin-bottom: 10px;
+        }
+
+        .policy-date {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .policy-summary {
+            max-width: 560px;
+            margin: 20px auto 0;
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.75;
+        }
+
+        /* ── Timeline layout ── */
+        .policy-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 28px 80px;
+            position: relative;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 48px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 16px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--flame-orange) 0%, rgba(255, 107, 53, 0.15) 100%);
+        }
+
+        .tl-section {
+            position: relative;
+            margin-bottom: 48px;
+        }
+
+        .tl-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .tl-dot {
+            position: absolute;
+            left: -48px;
+            top: 4px;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            border: 2px solid var(--charcoal);
+            z-index: 2;
+        }
+
+        .td-orange { background: var(--flame-orange); }
+        .td-green { background: var(--herb-green); }
+        .td-gold { background: var(--gold-coin); }
+        .td-red { background: var(--sizzle-red); }
+        .td-purple { background: #9C27B0; }
+        .td-blue { background: #2196F3; }
+        .td-teal { background: #009688; }
+        .td-pink { background: #E91E63; }
+        .td-grey { background: #607D8B; }
+
+        .tl-section h2 {
+            font-family: "Lilita One", cursive;
+            font-size: 22px;
+            letter-spacing: 0.01em;
+            margin-bottom: 12px;
+            padding-top: 2px;
+        }
+
+        .tl-section p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.65);
+            line-height: 1.85;
+            margin-bottom: 12px;
+        }
+
+        .tl-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tl-section ul {
+            margin: 8px 0 14px;
+            padding-left: 20px;
+        }
+
+        .tl-section li {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 6px;
+            line-height: 1.75;
+        }
+
+        .tl-section li:last-child {
+            margin-bottom: 0;
+        }
+
+        .callout {
+            margin: 16px 0 12px;
+            padding: 16px 20px;
+            border-radius: 14px;
+            background: rgba(76, 175, 80, 0.1);
+            border-left: 3px solid var(--herb-green);
+        }
+
+        .callout p {
+            font-size: 14px;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.85);
+            margin: 0;
+        }
+
+        .contact-row {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 8px;
+            padding: 12px 20px;
+            border-radius: 12px;
+            background: rgba(255, 107, 53, 0.1);
+            border: 1px solid rgba(255, 107, 53, 0.15);
+        }
+
+        .contact-row span {
+            font-size: 18px;
+        }
+
+        .contact-row a {
+            color: var(--gold-coin);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        .contact-row a:hover {
+            color: var(--flame-orange);
+            text-decoration: underline;
+        }
+
+        /* ── Footer ── */
+        footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 24px 28px 32px;
+            background: var(--charcoal);
+        }
+
+        .footer-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .footer-inner span {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .footer-inner a {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-inner a:hover {
+            color: var(--flame-orange);
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 640px) {
+            .policy-hero h1 {
+                font-size: 30px;
+            }
+
+            .timeline {
+                padding-left: 40px;
+            }
+
+            .timeline::before {
+                left: 12px;
+            }
+
+            .tl-dot {
+                left: -40px;
+                width: 28px;
+                height: 28px;
+                font-size: 12px;
+            }
+
+            .tl-section h2 {
+                font-size: 19px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="top-bar">
+        <div class="top-bar-inner">
+            <a class="back-link" href="index.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+                Back to Home
+            </a>
+            <div class="top-brand">Flavor Fusion Rush</div>
+        </div>
+    </div>
+
+    <div class="policy-hero">
+        <div class="shield-icon">🛡️</div>
+        <h1>Privacy Policy</h1>
+        <div class="policy-date">Effective Date: March 28, 2026</div>
+        <p class="policy-summary">
+            Your trust matters. This policy explains how Flavor Fusion Rush handles your information — spoiler: we keep things simple and private.
+        </p>
+    </div>
+
+    <main>
+        <div class="policy-content">
+            <div class="timeline">
+
+                <div class="tl-section">
+                    <div class="tl-dot td-orange">📋</div>
+                    <h2>Introduction</h2>
+                    <p>Welcome to <strong>Flavor Fusion Rush</strong> ("the App"), a fast-paced cooking time-management game developed and published by Aaqib Javed. This Privacy Policy is designed to help you understand what information is collected when you use our App, how that information is used, and what choices you have. By downloading, installing, or using Flavor Fusion Rush, you acknowledge that you have read and agree to this Privacy Policy.</p>
+                </div>
+
+                <div class="tl-section">
+                    <div class="tl-dot td-green">🔒</div>
+                    <h2>Information We Do Not Collect</h2>
+                    <div class="callout">
+                        <p>Flavor Fusion Rush does not collect any personal data from its users.</p>
+                    </div>
+                    <p>We built Flavor Fusion Rush to be a standalone, privacy-respecting gaming experience. The App does not require you to create an account, sign in, or provide any personally identifiable information. Specifically, we do not collect:</p>
+                    <ul>
+                        <li>Names, email addresses, or phone numbers</li>
+                        <li>Location data or IP addresses</li>
+                        <li>Payment or financial information</li>
+                        <li>Photos, contacts, or other device content</li>
+                        <li>Advertising identifiers or tracking profiles</li>
+                    </ul>
+                </div>
+
+                <div class="tl-section">
+                    <div class="tl-dot td-gold">📱</div>
+                    <h2>Device & Technical Data</h2>
+                    <p>When you download or update Flavor Fusion Rush through the Apple App Store, certain basic technical information may be collected by Apple as part of their standard platform operations. This may include:</p>
+                    <ul>
+                        <li>Device type and operating system version</li>
+                        <li>App version number</li>
+                        <li>General crash logs and performance diagnostics</li>
+                    </ul>
+                    <p>This information is aggregated and anonymized by the platform. We use it solely to identify bugs, improve stability, and ensure the App works smoothly across different devices. None of this data can be used to identify you as an individual.</p>
+                </div>
+
+                <div class="tl-section">
+                    <div class="tl-dot td-red">🗄️</div>
+                    <h2>Local Data Storage</h2>
+                    <p>Flavor Fusion Rush stores your game progress, coin balance, level completion status, and preferences entirely on your device using standard iOS storage mechanisms. This data never leaves your device and is not transmitted to our servers or any third party.</p>
+                    <p>If you uninstall the App, all locally stored game data will be permanently deleted from your device.</p>
+                </div>
+
+                <div class="tl-section">
+                    <div class="tl-dot td-purple">🔗</div>
+                    <h2>Third-Party Services</h2>
+                    <p>Flavor Fusion Rush is distributed exclusively through the Apple App Store, which is governed by Apple's own privacy policy and terms of service. We encourage you to review <a href="https://www.apple.com/legal/privacy/" style="color: var(--gold-coin); text-decoration: none; font-weight: 700;">Apple's Privacy Policy</a> for details on how they handle data related to app distribution.</p>
+                    <p>The App does not integrate any third-party analytics frameworks, advertising SDKs, social media plugins, or external tracking tools. Your gameplay remains entirely private.</p>
+                </div>
+
+                <div class="tl-section">
+                    <div class="tl-dot td-blue">👶</div>
+                    <h2>Children's Privacy</h2>
+                    <p>Flavor Fusion Rush is rated 4+ on the App Store and is designed to be enjoyed by players of all ages, including children. Because we do not collect any personal information whatsoever, there is no possibility of inadvertently gathering data from children under the age of 13 (or the applicable age in your jurisdiction).</p>
+                    <p>We are committed to full compliance with the Children's Online Privacy Protection Act (COPPA), the General Data Protection Regulation (GDPR) provisions concerning minors, and other applicable child privacy laws worldwide.</p>
+                </div>
+
+                <div class="tl-section">
+                    <div class="tl-dot td-teal">🔐</div>
+                    <h2>Data Security</h2>
+                    <p>Even though Flavor Fusion Rush does not collect personal data, we take security seriously. All game-related data is stored locally on your device using the native iOS sandbox environment, which provides robust protection against unauthorized access by other applications.</p>
+                    <p>We do not operate external servers or databases that store user information. Your gameplay data exists only on your device and under your control.</p>
+                </div>
+
+                <div class="tl-section">
+                    <div class="tl-dot td-pink">⚖️</div>
+                    <h2>Your Rights & Choices</h2>
+                    <p>Because Flavor Fusion Rush does not collect or process personal data on remote servers, traditional data subject rights — such as requests for access, rectification, erasure, or portability — do not apply in the conventional sense. However, you retain full control over all locally stored data by managing or deleting the App from your device at any time.</p>
+                    <p>If you are located in the European Economic Area (EEA), California, the United Kingdom, or any other jurisdiction with specific data protection legislation, our zero-collection approach is inherently aligned with the protective goals of these regulations.</p>
+                </div>
+
+                <div class="tl-section">
+                    <div class="tl-dot td-grey">🔄</div>
+                    <h2>Changes to This Policy</h2>
+                    <p>We may update this Privacy Policy from time to time to reflect changes in our practices, legal requirements, or operational needs. When material changes are made, we will update the "Effective Date" shown at the top of this page. We recommend reviewing this page periodically to stay informed about how we protect your privacy.</p>
+                    <p>Continued use of the App after any changes constitutes acceptance of the revised Privacy Policy.</p>
+                </div>
+
+                <div class="tl-section">
+                    <div class="tl-dot td-orange">💬</div>
+                    <h2>Contact Us</h2>
+                    <p>If you have any questions, concerns, or feedback regarding this Privacy Policy or Flavor Fusion Rush, please do not hesitate to reach out. We are happy to help.</p>
+                    <div class="contact-row">
+                        <span>✉️</span>
+                        <a href="mailto:sharonakinyi170@proton.me">sharonakinyi170@proton.me</a>
+                    </div>
+                    <p>We aim to respond to all inquiries within a reasonable timeframe.</p>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-inner">
+            <span>&copy; <span id="year"></span> Flavor Fusion Rush. All rights reserved.</span>
+            <a href="index.html">Home</a>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flavor Fusion Rush – Fast-Paced Cooking Game</title>
+    <meta name="description" content="Prep, fuse & serve dishes before time runs out! Master the kitchen in this fast-paced cooking time-management game.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --flame-orange: #FF6B35;
+            --sizzle-red: #E8333A;
+            --gold-coin: #FFB800;
+            --herb-green: #4CAF50;
+            --deep-brown: #2C1810;
+            --warm-cream: #FFF8F0;
+            --charcoal: #1A1A2E;
+            --steel-blue: #3A506B;
+            --belt-grey: #5C6378;
+            --soft-white: #FEFCFA;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--charcoal);
+            color: #fff;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        .display-font {
+            font-family: "Lilita One", "Nunito", cursive;
+        }
+
+        /* ── Header ── */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 16px 28px;
+            background: rgba(26, 26, 46, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 107, 53, 0.15);
+        }
+
+        .header-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--flame-orange), var(--sizzle-red));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            box-shadow: 0 4px 14px rgba(255, 107, 53, 0.4);
+        }
+
+        .brand-name {
+            font-family: "Lilita One", cursive;
+            font-size: 18px;
+            letter-spacing: 0.02em;
+            background: linear-gradient(135deg, var(--flame-orange), var(--gold-coin));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+
+        nav a {
+            font-size: 13px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--gold-coin);
+        }
+
+        /* ── Hero ── */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 28px 60px;
+            position: relative;
+            background:
+                radial-gradient(ellipse 80% 60% at 50% 40%, rgba(255, 107, 53, 0.12) 0%, transparent 70%),
+                radial-gradient(ellipse 60% 50% at 80% 20%, rgba(232, 51, 58, 0.08) 0%, transparent 60%),
+                var(--charcoal);
+        }
+
+        .hero-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            width: 100%;
+        }
+
+        .hero-text {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--gold-coin);
+            background: rgba(255, 184, 0, 0.12);
+            border: 1px solid rgba(255, 184, 0, 0.2);
+            padding: 6px 16px;
+            border-radius: 24px;
+            margin-bottom: 24px;
+        }
+
+        .hero-title {
+            font-family: "Lilita One", cursive;
+            font-size: 56px;
+            line-height: 1.05;
+            letter-spacing: 0.01em;
+            margin-bottom: 20px;
+        }
+
+        .hero-title .accent {
+            background: linear-gradient(135deg, var(--flame-orange), var(--gold-coin));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-desc {
+            font-size: 17px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 480px;
+            margin-bottom: 12px;
+        }
+
+        .hero-meta {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 32px;
+        }
+
+        .cta-row {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 30px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, var(--flame-orange), var(--sizzle-red));
+            text-decoration: none;
+            color: #fff;
+            font-size: 15px;
+            font-weight: 700;
+            box-shadow: 0 6px 24px rgba(255, 107, 53, 0.4);
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 36px rgba(255, 107, 53, 0.5);
+        }
+
+        .cta-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .cta-sub {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        /* ── Kitchen Visual ── */
+        .hero-visual {
+            position: relative;
+        }
+
+        .kitchen-scene {
+            border-radius: 28px;
+            background: linear-gradient(160deg, #2A1F3D 0%, #1E1533 50%, #1A1028 100%);
+            padding: 32px;
+            box-shadow: 0 24px 64px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 107, 53, 0.12);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .kitchen-scene::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--flame-orange), var(--gold-coin), var(--sizzle-red));
+        }
+
+        .conveyor {
+            display: flex;
+            gap: 14px;
+            align-items: center;
+            padding: 20px 0;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .conveyor::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: repeating-linear-gradient(90deg, var(--belt-grey) 0px, var(--belt-grey) 16px, #3D4255 16px, #3D4255 20px);
+            border-radius: 2px;
+        }
+
+        .food-item {
+            width: 72px;
+            height: 72px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            position: relative;
+            flex-shrink: 0;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .food-item:nth-child(2) { animation-delay: 0.4s; }
+        .food-item:nth-child(3) { animation-delay: 0.8s; }
+        .food-item:nth-child(4) { animation-delay: 1.2s; }
+        .food-item:nth-child(5) { animation-delay: 1.6s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+
+        .fi-raw { background: rgba(76, 175, 80, 0.2); border: 2px solid rgba(76, 175, 80, 0.3); }
+        .fi-cook { background: rgba(255, 107, 53, 0.2); border: 2px solid rgba(255, 107, 53, 0.3); }
+        .fi-fuse { background: rgba(255, 184, 0, 0.2); border: 2px solid rgba(255, 184, 0, 0.3); }
+        .fi-done { background: rgba(232, 51, 58, 0.2); border: 2px solid rgba(232, 51, 58, 0.3); }
+        .fi-star { background: rgba(179, 136, 255, 0.2); border: 2px solid rgba(179, 136, 255, 0.3); }
+
+        .machine-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        .machine {
+            border-radius: 16px;
+            padding: 18px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .machine-cook {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.15), rgba(232, 51, 58, 0.1));
+            border: 1px solid rgba(255, 107, 53, 0.2);
+        }
+
+        .machine-fuse {
+            background: linear-gradient(135deg, rgba(255, 184, 0, 0.15), rgba(255, 107, 53, 0.1));
+            border: 1px solid rgba(255, 184, 0, 0.2);
+        }
+
+        .machine-emoji {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .machine-label {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .machine-bar {
+            margin-top: 10px;
+            height: 6px;
+            border-radius: 3px;
+            background: rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+        }
+
+        .machine-bar-fill {
+            height: 100%;
+            border-radius: 3px;
+            animation: progress 2.5s ease-in-out infinite;
+        }
+
+        .bar-orange { background: linear-gradient(90deg, var(--flame-orange), var(--gold-coin)); }
+        .bar-gold { background: linear-gradient(90deg, var(--gold-coin), #FFA500); }
+
+        @keyframes progress {
+            0% { width: 0%; }
+            50% { width: 85%; }
+            100% { width: 0%; }
+        }
+
+        /* ── Gameplay Section ── */
+        .gameplay {
+            padding: 100px 28px;
+            background:
+                radial-gradient(ellipse 70% 50% at 20% 80%, rgba(255, 184, 0, 0.06) 0%, transparent 60%),
+                linear-gradient(180deg, var(--charcoal) 0%, #16162B 100%);
+        }
+
+        .gameplay-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--flame-orange);
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            font-family: "Lilita One", cursive;
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 56px;
+            letter-spacing: 0.01em;
+        }
+
+        .loop-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 16px;
+            position: relative;
+        }
+
+        .loop-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 28px 20px;
+            text-align: center;
+            transition: transform 0.2s ease, background 0.2s ease;
+            position: relative;
+        }
+
+        .loop-card:hover {
+            transform: translateY(-6px);
+            background: rgba(255, 255, 255, 0.07);
+        }
+
+        .loop-step {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-family: "Lilita One", cursive;
+            font-size: 18px;
+            margin-bottom: 14px;
+        }
+
+        .ls-1 { background: var(--herb-green); color: #fff; }
+        .ls-2 { background: var(--flame-orange); color: #fff; }
+        .ls-3 { background: var(--gold-coin); color: var(--deep-brown); }
+        .ls-4 { background: var(--sizzle-red); color: #fff; }
+        .ls-5 { background: #B388FF; color: #fff; }
+
+        .loop-icon {
+            font-size: 32px;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .loop-card h3 {
+            font-size: 15px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .loop-card p {
+            font-size: 12px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.55);
+        }
+
+        /* ── Features ── */
+        .features {
+            padding: 100px 28px;
+            background: linear-gradient(180deg, #16162B 0%, #12122A 100%);
+        }
+
+        .features-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .feature-card {
+            display: flex;
+            gap: 20px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 20px;
+            padding: 28px 24px;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 107, 53, 0.2);
+        }
+
+        .feature-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .fic-orange { background: rgba(255, 107, 53, 0.15); }
+        .fic-red { background: rgba(232, 51, 58, 0.12); }
+        .fic-gold { background: rgba(255, 184, 0, 0.15); }
+        .fic-green { background: rgba(76, 175, 80, 0.15); }
+        .fic-purple { background: rgba(179, 136, 255, 0.12); }
+        .fic-blue { background: rgba(58, 80, 107, 0.3); }
+
+        .feature-text h3 {
+            font-size: 16px;
+            font-weight: 800;
+            margin-bottom: 6px;
+        }
+
+        .feature-text p {
+            font-size: 13px;
+            line-height: 1.75;
+            color: rgba(255, 255, 255, 0.55);
+        }
+
+        /* ── Power-ups ── */
+        .powerups {
+            padding: 100px 28px;
+            background:
+                radial-gradient(ellipse 60% 40% at 80% 50%, rgba(179, 136, 255, 0.06) 0%, transparent 60%),
+                linear-gradient(180deg, #12122A 0%, var(--charcoal) 100%);
+        }
+
+        .powerups-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .powerup-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .powerup-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 28px 20px;
+            text-align: center;
+            transition: transform 0.2s ease;
+        }
+
+        .powerup-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .pu-icon {
+            font-size: 36px;
+            margin-bottom: 14px;
+        }
+
+        .powerup-card h3 {
+            font-size: 15px;
+            font-weight: 800;
+            margin-bottom: 6px;
+        }
+
+        .powerup-card p {
+            font-size: 12px;
+            line-height: 1.65;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* ── CTA Banner ── */
+        .download-section {
+            padding: 0 28px 100px;
+            background: var(--charcoal);
+        }
+
+        .download-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .download-card {
+            border-radius: 28px;
+            background: linear-gradient(135deg, var(--flame-orange) 0%, var(--sizzle-red) 50%, #B83280 100%);
+            padding: 60px 48px;
+            text-align: center;
+            box-shadow: 0 16px 56px rgba(255, 107, 53, 0.25);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download-card::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -20%;
+            width: 50%;
+            height: 120%;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .download-card h2 {
+            font-family: "Lilita One", cursive;
+            font-size: 34px;
+            margin-bottom: 12px;
+            position: relative;
+        }
+
+        .download-card p {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-bottom: 28px;
+            position: relative;
+        }
+
+        .download-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 36px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.95);
+            text-decoration: none;
+            color: var(--deep-brown);
+            font-size: 15px;
+            font-weight: 800;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            transition: transform 0.15s ease;
+            position: relative;
+        }
+
+        .download-cta:hover {
+            transform: translateY(-2px);
+        }
+
+        /* ── Footer ── */
+        footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 24px 28px 32px;
+            background: var(--charcoal);
+        }
+
+        .footer-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .footer-copy {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.35);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.35);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--flame-orange);
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 900px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-title {
+                font-size: 40px;
+            }
+
+            .loop-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .powerup-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero {
+                padding: 90px 20px 40px;
+            }
+
+            .hero-title {
+                font-size: 32px;
+            }
+
+            .loop-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .powerup-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .download-card {
+                padding: 40px 24px;
+            }
+
+            .download-card h2 {
+                font-size: 26px;
+            }
+
+            nav {
+                gap: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-inner">
+            <div class="brand">
+                <div class="brand-icon">🍳</div>
+                <div class="brand-name">Flavor Fusion Rush</div>
+            </div>
+            <nav>
+                <a href="#gameplay">Gameplay</a>
+                <a href="#features">Features</a>
+                <a href="privacy.html">Privacy</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-badge">Cooking Time-Management Game</div>
+                <h1 class="hero-title">
+                    Prep. Fuse.<br>
+                    <span class="accent">Serve the Rush.</span>
+                </h1>
+                <p class="hero-desc">
+                    Take command of a fully automated kitchen line! Tap to dispense ingredients, route them through Cooking and Fusion machines, and serve complex dishes to impatient customers before their timers run out.
+                </p>
+                <p class="hero-meta">
+                    Free on iPhone &amp; iPad &middot; iOS 15+ &middot; Ages 4+
+                </p>
+                <div class="cta-row">
+                    <a class="cta-btn" href="https://apps.apple.com/us/app/flavor-fusion-rush/id6760826291?uo=4" target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 21.99 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.09 21.99C7.79 22.03 6.8 20.68 5.96 19.47C4.25 16.97 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"/></svg>
+                        Download Free
+                    </a>
+                    <span class="cta-sub">Available on the App Store</span>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="kitchen-scene">
+                    <div class="conveyor">
+                        <div class="food-item fi-raw">🐟</div>
+                        <div class="food-item fi-raw">🍚</div>
+                        <div class="food-item fi-cook">🍣</div>
+                        <div class="food-item fi-fuse">🍱</div>
+                        <div class="food-item fi-done">🍽️</div>
+                    </div>
+                    <div class="machine-row">
+                        <div class="machine machine-cook">
+                            <div class="machine-emoji">🔥</div>
+                            <div class="machine-label">Cooking Machine</div>
+                            <div class="machine-bar">
+                                <div class="machine-bar-fill bar-orange"></div>
+                            </div>
+                        </div>
+                        <div class="machine machine-fuse">
+                            <div class="machine-emoji">⚡</div>
+                            <div class="machine-label">Fusion Machine</div>
+                            <div class="machine-bar">
+                                <div class="machine-bar-fill bar-gold"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gameplay" id="gameplay">
+        <div class="gameplay-inner">
+            <div class="section-label">Core Loop</div>
+            <h2 class="section-title">Master the Kitchen Line</h2>
+            <div class="loop-grid">
+                <div class="loop-card">
+                    <div class="loop-step ls-1">1</div>
+                    <span class="loop-icon">📦</span>
+                    <h3>Supply</h3>
+                    <p>Tap Ingredient Crates to dispense raw materials like Fish and Rice onto the conveyor belt.</p>
+                </div>
+                <div class="loop-card">
+                    <div class="loop-step ls-2">2</div>
+                    <span class="loop-icon">🔥</span>
+                    <h3>Cook</h3>
+                    <p>Send raw food into the Cooking Machine. Watch the timer and tap to eject before it overcooks!</p>
+                </div>
+                <div class="loop-card">
+                    <div class="loop-step ls-3">3</div>
+                    <span class="loop-icon">⚡</span>
+                    <h3>Fuse</h3>
+                    <p>Combine multiple cooked ingredients in the Fusion Machine to create complex plated dishes.</p>
+                </div>
+                <div class="loop-card">
+                    <div class="loop-step ls-4">4</div>
+                    <span class="loop-icon">🍽️</span>
+                    <h3>Serve</h3>
+                    <p>Dishes travel down the belt to Serving Stations where impatient customers are waiting.</p>
+                </div>
+                <div class="loop-card">
+                    <div class="loop-step ls-5">5</div>
+                    <span class="loop-icon">💰</span>
+                    <h3>Earn</h3>
+                    <p>Collect coins from happy customers with bonuses for fast service. Upgrade your kitchen!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="features-inner">
+            <div class="section-label">Why You'll Love It</div>
+            <h2 class="section-title">Kitchen Chaos, Perfected</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon fic-orange">⏱️</div>
+                    <div class="feature-text">
+                        <h3>Dynamic Customer Patience</h3>
+                        <p>Customers show visible patience bars from green to red. Serve fast for bonus tips, or watch them storm out angry!</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon fic-red">🔥</div>
+                    <div class="feature-text">
+                        <h3>Overcooking & Trash</h3>
+                        <p>Leave food too long and it burns! Burnt items must go to the Trash Station, costing precious time in the rush.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon fic-gold">🏆</div>
+                    <div class="feature-text">
+                        <h3>Sequential Levels</h3>
+                        <p>Progress through increasingly challenging levels. Serve target customers, avoid overcooking, and conquer special challenge rules.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon fic-green">💰</div>
+                    <div class="feature-text">
+                        <h3>Persistent Economy</h3>
+                        <p>Coins earned are saved to a persistent bank. Save up for expensive power-ups when harder levels demand them.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon fic-purple">🎓</div>
+                    <div class="feature-text">
+                        <h3>Interactive Tutorial</h3>
+                        <p>A robust, guided onboarding experience physically walks you through every step of the fusion loop safely.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon fic-blue">📱</div>
+                    <div class="feature-text">
+                        <h3>Tap-Based Controls</h3>
+                        <p>Intuitive tap-to-interact gameplay designed for touch screens. Easy to learn, challenging to master under time pressure.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="powerups">
+        <div class="powerups-inner">
+            <div class="section-label">Game Changers</div>
+            <h2 class="section-title">Power-Ups at Your Fingertips</h2>
+            <div class="powerup-grid">
+                <div class="powerup-card">
+                    <div class="pu-icon">🔪</div>
+                    <h3>Chef's Knife</h3>
+                    <p>Instantly destroy a mistake or overcooked item on the belt. Clean up fast and keep the line moving.</p>
+                </div>
+                <div class="powerup-card">
+                    <div class="pu-icon">❄️</div>
+                    <h3>Cold Storage</h3>
+                    <p>Temporarily stash a food item off the belt to free up space when things get hectic.</p>
+                </div>
+                <div class="powerup-card">
+                    <div class="pu-icon">✨</div>
+                    <h3>Plate Polish</h3>
+                    <p>Instantly finish any active Cooking or Fusion machine timer. Skip the wait, serve the dish.</p>
+                </div>
+                <div class="powerup-card">
+                    <div class="pu-icon">🔀</div>
+                    <h3>Shuffle</h3>
+                    <p>Swap out current customers if their patience is running low. Fresh faces, fresh chances.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="download-section">
+        <div class="download-inner">
+            <div class="download-card">
+                <h2>Ready to Run the Kitchen?</h2>
+                <p>Download Flavor Fusion Rush now and prove you can handle the heat!</p>
+                <a class="download-cta" href="https://apps.apple.com/us/app/flavor-fusion-rush/id6760826291?uo=4" target="_blank" rel="noopener noreferrer">
+                    Get It on the App Store
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-copy">&copy; <span id="year"></span> Flavor Fusion Rush. All rights reserved.</div>
+            <div class="footer-links">
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="https://apps.apple.com/us/app/flavor-fusion-rush/id6760826291?uo=4" target="_blank" rel="noopener noreferrer">App Store</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>
